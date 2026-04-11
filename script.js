@@ -55,9 +55,7 @@ const questionBank = [
   { q: "身為前鋒，當隊友『傳球給你的瞬間』，你發現自己比對方的倒數第二名防守球員還要靠近球門。這屬於什麼狀況？", opts: ["完美的戰術走位", "你處於越位位置，屬於犯規"], ans: 1 },
   { q: "比賽進入傷停補時，前鋒在禁區內倒地，但你身為主裁判視線剛好被擋住了，無法確定是否為假摔。這時你應該求助什麼系統？", opts: ["VAR影像輔助裁判", "鷹眼網球追蹤系統"], ans: 0 },
   { q: "如果你穿越時空回到1920年代的台南，你想感受一場最火熱、被稱為『台南德比』的足球賽，你該去哪兩所學校的比賽現場？", opts: ["長榮中學 對決 南一中", "建國中學 對決 師大附中"], ans: 0 },
-  { q: "如果你穿越時空回到1920年代的台南，你想感受一場最火熱、被稱為『台南德比』的足球賽，你該去哪兩所學校的比賽現場？", opts: ["長榮中學 對決 南一中", "建國中學 對決 師大附中"], ans: 0 },
-  { q: "如果你穿越時空回到1920年代的台南，你想感受一場最火熱、被稱為『台南德比』的足球賽，你該去哪兩所學校的比賽現場？", opts: ["長榮中學 對決 南一中", "建國中學 對決 師大附中"], ans: 0 },
-  { q: "在看被稱為『台南德比』的足球賽時，身邊的臺灣球迷看球看到激動處，最可能拿出什麼農作物當武器叫陣？", opts: ["香蕉", "紅甘蔗"], ans: 1 },
+  { q: "承上題，當時在看台南德比時，身邊的臺灣球迷看球看到激動處，最可能拿出什麼農作物當武器叫陣？", opts: ["香蕉", "紅甘蔗"], ans: 1 },
   { q: "1950年代中華隊奪下兩面亞運足球金牌。如果你是當時的體育記者，你會知道陣中的主力球員大多來自哪裡？", opts: ["香港的頂尖華人球員", "臺灣本土的大學生"], ans: 0 },
   { q: "你想找尋早期華人足球的傳奇，有一位號稱『亞洲球王』，據說當年連歐洲球隊都想挖角他。他是誰？", opts: ["李惠堂", "萬榮華"], ans: 0 },
   { q: "1970年代，你想見證台灣足球最輝煌的女足時代。這支連續拿下三屆亞洲盃冠軍的傳奇隊伍叫什麼名字？", opts: ["梅花女足", "木蘭女足"], ans: 1 },
@@ -279,4 +277,77 @@ window.addEventListener('resize', () => {
       initCardFan();
     }
   }, 200);
+});
+// =========================================
+// 新增：互動式球場圖鑑邏輯與知識庫
+// =========================================
+function initPitchMap() {
+  const zones = document.querySelectorAll('.interactive-zone');
+  const infoCard = document.getElementById('pitchInfoCard');
+
+  // 球場知識庫
+  const pitchKnowledge = {
+    "center-circle": {
+      title: "中圈 (Center Circle)",
+      icon: "fa-circle-dot",
+      desc: "半徑 9.15 公尺。開球時，防守方球員必須退到中圈線外，給予開球方足夠的空間。直到球被踢出且明顯移動後，防守球員才能進入中圈。"
+    },
+    "penalty-area": {
+      title: "禁區 (18碼區 / Penalty Area)",
+      icon: "fa-square-check",
+      desc: "守門員在全場唯一可以『合法用手觸球』的區域。如果防守方在此區域內對進攻方發生嚴重犯規，將會直接被判罰 12 碼極刑！"
+    },
+    "goal-area": {
+      title: "球門區 (6碼區 / Goal Area)",
+      icon: "fa-shield-halved",
+      desc: "這是用來踢『球門球』的專屬範圍。這個區域是對守門員保護最嚴格的絕對領域，進攻球員在此區內若是對守門員有任何衝撞，通常都會被吹判犯規。"
+    },
+    "penalty-arc": {
+      title: "罰球弧 (禁區弧 / Penalty Arc)",
+      icon: "fa-rainbow",
+      desc: "這個弧線的唯一作用就是『量距離』。在罰 12 碼球時，除了主罰球員和守門員外，其他所有球員都必須站在禁區外，同時也必須退到這條弧線之外（確保距離罰球點 9.15 公尺）。"
+    },
+    "corner": {
+      title: "角球區 (Corner Area)",
+      icon: "fa-flag",
+      desc: "半徑 1 公尺的四分之一圓。當防守方將球踢出自家底線時，進攻方可在此開角球。球必須放置在弧線內或壓線，且角旗桿絕對不能被拔起來！"
+    },
+    "touchline": {
+      title: "邊線與底線 (Touchline & Goal line)",
+      icon: "fa-lines-leaning",
+      desc: "足球規則規定，球體必須『完全』越過白線的外徑才算界外或進球。如果球在空中飛越邊線但被風吹回，只要它有一點點投影壓在線上，比賽就得繼續！"
+    }
+  };
+
+  zones.forEach(zone => {
+    zone.addEventListener('click', function() {
+      // 1. 移除其他區域的發光狀態，並讓當前點擊的區域發光
+      zones.forEach(z => z.classList.remove('active-zone'));
+      this.classList.add('active-zone');
+
+      // 2. 獲取對應的知識數據
+      const zoneId = this.getAttribute('data-zone');
+      const data = pitchKnowledge[zoneId];
+
+      if(data) {
+        // 3. 卡片內容淡出淡入替換效果
+        infoCard.style.opacity = 0;
+        setTimeout(() => {
+          infoCard.innerHTML = `
+            <div class="text-center mb-3">
+              <i class="fa-solid ${data.icon} text-success pop-anim" style="font-size: 3.5rem;"></i>
+            </div>
+            <h4 class="fw-bold text-dark mb-3">${data.title}</h4>
+            <p class="text-muted fs-6 lh-base text-start mx-auto" style="max-width: 90%;">${data.desc}</p>
+          `;
+          infoCard.style.opacity = 1;
+        }, 200); // 等待 200ms 後載入新內容
+      }
+    });
+  });
+}
+
+// 確保網頁載入時啟動互動球場的監聽事件
+document.addEventListener("DOMContentLoaded", function() {
+  initPitchMap();
 });
