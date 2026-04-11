@@ -107,3 +107,34 @@ body {
   transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
 }
+/* =========================================
+   新增：互動式球場圖鑑特效
+   ========================================= */
+.interactive-zone {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 滑鼠滑過時發出微微的金黃光 */
+.interactive-zone:hover {
+  fill: rgba(255, 215, 0, 0.4); 
+  stroke: #FFD700;
+  stroke-width: 1;
+}
+
+/* 點擊鎖定後的強烈亮光 */
+.interactive-zone.active-zone {
+  fill: rgba(255, 215, 0, 0.6);
+  stroke: #FFD700;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+.pulse-icon {
+  animation: pulse-op 1.5s infinite alternate;
+}
+
+@keyframes pulse-op {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
