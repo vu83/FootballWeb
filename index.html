@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>足球網頁</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="d-flex" id="wrapper">
+  <div class="bg-football-green text-white shadow-lg" id="sidebar-wrapper">
+    <div class="sidebar-heading text-center py-4 fs-4 fw-bold" onclick="showPage('home')" style="cursor: pointer;">
+      <i class="fa-regular fa-futbol me-2"></i>「足」夠了解？
+    </div>
+    <div class="list-group list-group-flush my-3">
+      <a href="#" class="list-group-item list-group-item-action bg-transparent text-white active-nav" onclick="showPage('home')">首頁</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent text-white" onclick="showPage('rules')">足球規則</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent text-white" onclick="showPage('history')">臺灣足球史</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent text-white" onclick="showPage('leagues')">五大聯賽</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent text-white" onclick="showPage('game')">小遊戲</a>
+    </div>
+  </div>
+
+  <div id="page-content-wrapper" class="w-100 bg-light-gray relative-wrap">
+    
+    <nav class="navbar navbar-light bg-white px-3 shadow-sm sticky-top" style="z-index: 1020;">
+      <button class="btn btn-outline-success rounded-pill px-4 fw-bold" id="menu-toggle">
+        <i class="fa-solid fa-bars me-2"></i>選單
+      </button>
+    </nav>
+
+    <div class="main-content">
+      
+      <section id="home" class="page-section active p-0 m-0">
+        <div class="position-relative w-100 vh-100 overflow-hidden">
+          <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex flex-column justify-content-center align-items-center text-white" style="z-index: 2;">
+            <h1 class="display-3 fw-bold mb-3 text-shadow tracking-wide hover-float">
+              歡迎來到足球世界
+            </h1>
+            <p class="fs-4 text-shadow mb-5">探索綠茵場上的無限可能，見證每一次的精準射門</p>
+            <button class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow-lg hover-float" onclick="showPage('rules')">
+              開始探索 <i class="fa-solid fa-arrow-right ms-2"></i>
+            </button>
+          </div>
+
+          <div id="heroCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner h-100">
+              <div class="carousel-item active h-100">
+                <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=1920&q=80" class="d-block w-100 h-100 object-fit-cover" alt="足球場">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1920&q=80" class="d-block w-100 h-100 object-fit-cover" alt="足球特寫">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="https://images.unsplash.com/photo-1551280857-2b9ebe52cdfc?auto=format&fit=crop&w=1920&q=80" class="d-block w-100 h-100 object-fit-cover" alt="觀眾席">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<section id="rules" class="page-section container-fluid p-4" style="display: none;">
+        <div class="section-header hover-float">
+          <h2 class="fw-bold mb-0 text-white"><i class="fa-solid fa-scale-balanced me-2"></i>足球規則</h2>
+        </div>
+        
+        <h5 class="fw-bold text-success mb-3"><i class="fa-solid fa-play-circle me-2"></i>規則影音解析</h5>
+        <div class="row row-cols-1 row-cols-md-2 g-4 mb-5">
+          <div class="col">
+            <div class="card h-100 shadow-sm video-card rounded-4 border-0" onclick="openVideoModal('越位規則解析影片')">
+              <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80" class="card-img-top rounded-top-4" alt="規則">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">越位規則解析</h5>
+                <p class="card-text text-muted">點擊觀看動態圖文影片</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="fw-bold text-success mb-3"><i class="fa-solid fa-book-open me-2"></i>詳細規則說明</h5>
+        
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark text-white d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">場地與<br>裝備人數</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text">國際標準草皮長度需達90-120公尺。邊線的判定非常嚴格，球體必須「完全離開」邊線外徑才算出界。標準比賽為11人制（含1名守門員），若因紅牌或受傷導致場上少於7人，裁判將沒收比賽並判該隊0-3輸球。球員必須配戴護脛，且絕對禁止攜帶任何可能傷人的珠寶首飾。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-success text-white d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">紅黃牌<br>警告機制</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text">黃牌是嚴重警告（如惡意拉扯、拖延時間），單場累積兩張黃牌將直接轉為紅牌。紅牌則是最高極刑（如背後惡意飛鏟、動手打人），球員必須立刻退場，且球隊「不能派人替補」，只能在剩餘時間內以少打多，這對球隊戰力是毀滅性的打擊。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-secondary text-white d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">越位與<br>VAR系統</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text">越位是為了防止球員「站在門前死等球」的偷跑條款。當隊友傳球的瞬間，若進攻方比倒數第二名防守球員更靠近底線，即算越位（接界外球、角球則例外）。現代足球引入了VAR（影像輔助裁判），在出現進球爭議、紅牌或12碼點球時，裁判可透過回放系統做出最精準的判決。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-danger text-white d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">自由球與<br>12碼罰球</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text">當防守方在禁區外犯規，進攻方可獲得自由球，防守方需退後9.15公尺排成人牆。但如果防守方在「自己的禁區內」犯規（如絆倒對手或手球），進攻方將獲得極具優勢的「12碼罰球（點球）」，由射手與守門員進行一對一的終極對決，通常進球率極高。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-5 pt-3 border-top border-success border-opacity-25">
+          <button class="btn btn-outline-success btn-lg rounded-pill px-5 fw-bold shadow-sm hover-float" onclick="showPage('history')">
+            前往：臺灣足球史 <i class="fa-solid fa-arrow-right ms-2"></i>
+          </button>
+        </div>
+      </section>
+
+      <section id="history" class="page-section container-fluid p-4" style="display: none;">
+        <div class="section-header hover-float">
+          <h2 class="fw-bold mb-0 text-white"><i class="fa-solid fa-clock-rotate-left me-2"></i>臺灣足球史</h2>
+        </div>
+
+        <h5 class="fw-bold text-success mb-3"><i class="fa-solid fa-play-circle me-2"></i>歷史影音回顧</h5>
+        <div class="row row-cols-1 row-cols-md-2 g-4 mb-5">
+          <div class="col">
+            <div class="card h-100 shadow-sm video-card rounded-4 border-0" onclick="openVideoModal('臺灣足球發展史影片')">
+              <div class="card-body text-center py-5 bg-dark text-white rounded-4">
+                <h5 class="card-title fw-bold text-success">臺灣足球發展史</h5>
+                <p class="card-text text-light">點擊觀看動態圖文影片</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="fw-bold text-success mb-4"><i class="fa-solid fa-shoe-prints me-2"></i>歷史重大里程碑</h5>
+        
+        <div class="vertical-timeline">
+          <div class="timeline-item left">
+            <div class="timeline-content shadow-sm border-top border-success border-4 hover-float">
+              <h4 class="text-success fw-bold">1920年代</h4>
+              <p class="fw-bold fs-5 mb-1">萬榮華與台南德比</p>
+              <p class="text-muted mb-0">英國傳教士萬榮華將足球帶入台南長榮中學。當時長榮對決日籍學生為主的南一中，被稱為「台南德比」，球迷在場邊啃紅甘蔗觀戰，甚至在1940年代遠征日本本土全國大賽。</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content shadow-sm border-top border-success border-4 hover-float">
+              <h4 class="text-success fw-bold">1950年代</h4>
+              <p class="fw-bold fs-5 mb-1">亞洲球王與亞運連霸</p>
+              <p class="text-muted mb-0">中華隊在1954、1958年亞運奪下二連霸金牌。這段巔峰期仰賴了「港台聯軍」的陣容，包含名震天下的亞洲球王李惠堂。然而1971年後因會籍與政策改變，導致外援斷層。</p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="timeline-content shadow-sm border-top border-success border-4 hover-float">
+              <h4 class="text-success fw-bold">1970年代</h4>
+              <p class="fw-bold fs-5 mb-1">木蘭女足締造傳奇</p>
+              <p class="text-muted mb-0">當男足陷入低谷，「木蘭女足」橫空出世。她們不僅連續拿下三屆亞洲盃冠軍，陣中名將周台英更是早期的旅外先驅，帶領台灣女足世界排名一度衝上全球前八。</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content shadow-sm border-top border-success border-4 hover-float">
+              <h4 class="text-success fw-bold">現代發展</h4>
+              <p class="fw-bold fs-5 mb-1">企甲聯賽與綠洲逆襲</p>
+              <p class="text-muted mb-0">隨著職棒興起與經費問題，台灣一度被稱為足球沙漠。但近年隨著「企業甲級聯賽」的建立、歸化球員的加入，台北田徑場的國際賽也曾創下萬人滿場的感動紀錄。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-5 pt-3 border-top border-success border-opacity-25">
+          <button class="btn btn-light btn-lg rounded-pill px-4 fw-bold shadow-sm hover-float" onclick="showPage('rules')">
+            <i class="fa-solid fa-arrow-left me-2"></i> 上一頁
+          </button>
+          <button class="btn btn-outline-success btn-lg rounded-pill px-5 fw-bold shadow-sm hover-float" onclick="showPage('leagues')">
+            前往：五大聯賽 <i class="fa-solid fa-arrow-right ms-2"></i>
+          </button>
+        </div>
+      </section>
+
+      <section id="leagues" class="page-section container-fluid p-4" style="display: none;">
+        <div class="section-header hover-float">
+          <h2 class="fw-bold mb-0 text-white"><i class="fa-solid fa-earth-europe me-2"></i>歐洲五大聯賽</h2>
+        </div>
+
+        <h5 class="fw-bold text-success mb-3"><i class="fa-solid fa-play-circle me-2"></i>聯賽特色影音</h5>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+          <div class="col">
+            <div class="card h-100 shadow-sm video-card rounded-4 border-0" onclick="openVideoModal('歐洲聯賽介紹影片')">
+              <div class="card-body">
+                <h5 class="card-title fw-bold text-dark">歐洲五大聯賽</h5>
+                <p class="card-text text-muted small">點擊觀看介紹影片</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="fw-bold text-success mb-3"><i class="fa-solid fa-magnifying-glass me-2"></i>聯賽深度解析</h5>
+        
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark text-white d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">英格蘭<br>超級聯賽</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text"><b>【商業價值最高】</b>特色是節奏快狠準、身體對抗極度激烈。由於天價轉播權利金的均分制度，連墊底球隊都有雄厚財力買入世界級球星，賽事懸念極大，擁有著名的「聖誕快車」密集賽程。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-danger text-white d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">西班牙<br>甲級聯賽</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text"><b>【極致傳控藝術】</b>球員追求細膩的盤帶與傳球技術，不崇尚盲目的身體碰撞。最著名的焦點是皇家馬德里與巴塞隆納的「國家德比」(El Clásico)，同時西甲各隊的青訓體系也聞名全球。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-warning text-dark d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">德國<br>甲級聯賽</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text"><b>【球迷文化至上】</b>特殊的「50+1政策」保障了球迷對俱樂部的話語權，加上親民的票價，使德甲擁有全球第一的超高上座率。球風講究紀律與進攻效率，拜仁慕尼黑在此長期展現強大統治力。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-info text-dark d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">義大利<br>甲級聯賽</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text"><b>【鏈式防守哲學】</b>著名的鏈式防守(Catenaccio)發源地，比起瘋狂進球，更享受「零封對手」的戰術快感。比賽走位與戰術佈置猶如大型圍棋，尤文圖斯與米蘭雙雄的對決充滿歷史底蘊。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
+          <div class="row g-0">
+            <div class="col-md-3 bg-primary text-white d-flex align-items-center justify-content-center p-4">
+              <h4 class="fw-bold mb-0 text-center">法國<br>甲級聯賽</h4>
+            </div>
+            <div class="col-md-9">
+              <div class="card-body p-4">
+                <p class="card-text"><b>【超級新星搖籃】</b>擁有頂尖青訓系統，被譽為足壇的「天才代工廠」，聚集了法國與非洲最頂尖的年輕天賦。近年巴黎聖日耳曼(PSG)的重金投資，讓法甲星光熠熠，話題性不斷攀升。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-5 pt-3 border-top border-success border-opacity-25">
+          <button class="btn btn-light btn-lg rounded-pill px-4 fw-bold shadow-sm hover-float" onclick="showPage('history')">
+            <i class="fa-solid fa-arrow-left me-2"></i> 上一頁
+          </button>
+          <button class="btn btn-outline-success btn-lg rounded-pill px-5 fw-bold shadow-sm hover-float" onclick="showPage('game')">
+            前往：知識大挑戰 <i class="fa-solid fa-arrow-right ms-2"></i>
+          </button>
+        </div>
+      </section>
+
+      <section id="game" class="page-section container-fluid p-4" style="display: none;">
+        <div class="section-header hover-float">
+          <h2 class="fw-bold mb-0 text-white"><i class="fa-solid fa-gamepad me-2"></i>足球知識大挑戰</h2>
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-3 bg-white p-3 rounded-pill shadow-sm border border-success border-2 mx-auto hover-float" style="max-width: 600px;">
+          <div class="fs-5 fw-bold text-dark">第 <span id="currentRoundText" class="text-success">1</span> / 10 題</div>
+          <div class="fs-5 fw-bold text-dark">積分：<span id="currentScoreText" class="text-success">0</span> 分</div>
+        </div>
+        
+        <p class="text-center mb-4 fs-6 text-muted fw-bold">從下方牌組抽題，每回合隨機 10 題，滿分 100 分。看看你能獲得什麼稱號！</p>
+        
+        <div class="card-fan-container mt-4" id="gameArea">
+          </div>
+
+        <div class="d-flex justify-content-center mt-5 pt-3">
+          <button class="btn btn-dark btn-lg rounded-pill px-5 fw-bold shadow-sm hover-float" onclick="showPage('home')">
+            <i class="fa-solid fa-house me-2"></i> 回到首頁
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<button onclick="topFunction()" id="backToTopBtn" title="回到頂部">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-80">
+    <div class="modal-content border-0 bg-dark text-white shadow-lg rounded-4">
+      <div class="modal-header border-success">
+        <h5 class="modal-title fw-bold" id="videoModalTitle">影片標題</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex align-items-center justify-content-center">
+        <h3 class="text-secondary">這裡將播放「<span id="videoNameTarget"></span>」</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="questionModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg rounded-4 transition-all" id="gameModalContent">
+      <div class="modal-header bg-football-green text-white">
+        <h5 class="modal-title fw-bold"><i class="fa-solid fa-circle-question me-2"></i>知識測驗</h5>
+      </div>
+      <div class="modal-body text-center p-5">
+        <h4 id="questionText" class="mb-4 text-dark fw-bold lh-base"></h4>
+        <div id="optionsContainer" class="d-flex justify-content-center gap-3 mt-4">
+          <button id="btnOptionA" class="btn btn-outline-dark rounded-pill px-4 py-2 fw-bold w-50"></button>
+          <button id="btnOptionB" class="btn btn-outline-dark rounded-pill px-4 py-2 fw-bold w-50"></button>
+        </div>
+        <div id="resultFeedback" class="d-none p-3 mt-4 rounded-4 shadow-sm">
+          <h3 id="resultText" class="fw-bold mb-0"></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="finalScoreModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg rounded-4">
+      <div class="modal-header bg-warning text-dark border-0 pb-0">
+        <h5 class="modal-title fw-bold fs-4 w-100 text-center mt-3"><i class="fa-solid fa-trophy text-danger me-2"></i> 測驗結束！</h5>
+      </div>
+      <div class="modal-body text-center p-5 pt-4">
+        <p class="fs-5 text-muted mb-2">你的最終得分是</p>
+        <h2 class="display-1 fw-bold text-success mb-2" id="finalScoreDisplay">100</h2>
+        <h4 class="mb-4 text-dark mt-4">獲得稱號：<br><span id="finalTitleDisplay" class="display-5 fw-bold text-danger mt-3 d-inline-block">綠茵傳奇</span></h4>
+        <button class="btn btn-success btn-lg rounded-pill px-5 py-2 fw-bold shadow" onclick="startNewGameRound()" data-bs-dismiss="modal">
+          <i class="fa-solid fa-rotate-right me-2"></i> 再玩一次
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
