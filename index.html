@@ -82,6 +82,45 @@
           </div>
         </div>
 
+        <h5 class="fw-bold text-success mb-4 mt-5"><i class="fa-solid fa-map-location-dot me-2"></i>互動式球場圖鑑</h5>
+        <div class="row g-4 align-items-center mb-5 hover-float">
+          <div class="col-lg-7">
+            <div class="pitch-container shadow-sm rounded-4 overflow-hidden border border-4 border-white position-relative" style="background-color: var(--football-green);">
+              <svg viewBox="0 0 120 80" class="w-100 h-100" style="display: block;">
+                <rect x="2" y="2" width="116" height="76" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="touchline"/>
+                <line x1="60" y1="2" x2="60" y2="78" stroke="white" stroke-width="0.5" />
+                
+                <circle cx="60" cy="40" r="9.15" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="center-circle" />
+                <circle cx="60" cy="40" r="0.5" fill="white" />
+
+                <rect x="2" y="20" width="16.5" height="40" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="penalty-area" />
+                <rect x="2" y="31" width="5.5" height="18" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="goal-area" />
+                <circle cx="11" cy="40" r="0.5" fill="white" />
+                <path d="M 18.5 31.5 A 9.15 9.15 0 0 1 18.5 48.5" fill="rgba(255,255,255,0.08)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="penalty-arc" />
+
+                <rect x="101.5" y="20" width="16.5" height="40" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="penalty-area" />
+                <rect x="112.5" y="31" width="5.5" height="18" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="goal-area" />
+                <circle cx="109" cy="40" r="0.5" fill="white" />
+                <path d="M 101.5 31.5 A 9.15 9.15 0 0 0 101.5 48.5" fill="rgba(255,255,255,0.08)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="penalty-arc" />
+
+                <path d="M 2 5 A 3 3 0 0 0 5 2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="corner" />
+                <path d="M 115 2 A 3 3 0 0 0 118 5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="corner" />
+                <path d="M 118 75 A 3 3 0 0 0 115 78" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="corner" />
+                <path d="M 5 78 A 3 3 0 0 0 2 75" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="0.5" class="interactive-zone" data-zone="corner" />
+              </svg>
+            </div>
+          </div>
+          
+          <div class="col-lg-5">
+            <div class="card border-0 shadow-sm rounded-4 h-100 bg-white" style="min-height: 250px;">
+              <div class="card-body p-4 d-flex flex-column justify-content-center text-center transition-all" id="pitchInfoCard">
+                <i class="fa-solid fa-hand-pointer text-success mb-3 pulse-icon" style="font-size: 3.5rem; opacity: 0.6;"></i>
+                <h4 class="fw-bold text-dark mb-3">請點選左側球場區域</h4>
+                <p class="text-muted">球場上隱藏了多個互動熱點（如禁區、中圈、角旗區），點擊發光區域即可解鎖專屬規則知識！</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <h5 class="fw-bold text-success mb-3"><i class="fa-solid fa-book-open me-2"></i>詳細規則說明</h5>
         
         <div class="card mb-4 shadow border-0 rounded-4 overflow-hidden hover-float">
