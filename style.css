@@ -6,20 +6,49 @@
 }
 
 body {
-  overflow-x: hidden; background-color: var(--light-gray); color: var(--dark-bg); font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* 移除了 overflow-x: hidden，讓選單可以正確「黏」在畫面上 */
+  background-color: var(--light-gray); 
+  color: var(--dark-bg); 
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .bg-football-green { background-color: var(--football-green) !important; }
 
+/* =========================================
+   分頁與側邊欄 (修復選單被擠壓的關鍵區域)
+   ========================================= */
 .page-section { display: none; animation: slideInUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
 .page-section.active { display: block; }
 @keyframes slideInUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
 
 #wrapper { transition: all 0.3s ease; }
-#sidebar-wrapper { width: 250px; transition: all 0.3s ease; z-index: 1030; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
-#wrapper.toggled #sidebar-wrapper { margin-left: -250px; }
+
+#sidebar-wrapper { 
+  width: 250px; 
+  min-width: 250px; /* 💡 關鍵修復：設定最小寬度，不准變小 */
+  flex-shrink: 0;   /* 💡 關鍵修復：拒絕被彈性盒子(Flexbox)壓縮 */
+  transition: all 0.3s ease; 
+  z-index: 1030; 
+  position: sticky; 
+  top: 0; 
+  height: 100vh; 
+  overflow-y: auto; 
+}
+
+#wrapper.toggled #sidebar-wrapper { 
+  margin-left: -250px; 
+}
+
+#page-content-wrapper {
+  width: auto !important; /* 💡 關鍵修復：蓋掉原有的 w-100，避免撐破畫面 */
+  flex: 1;                /* 💡 關鍵修復：自動填滿剩下的螢幕空間 */
+  min-width: 0;           /* 💡 關鍵修復：防止內部內容把網頁撐開產生橫向卷軸 */
+  transition: all 0.3s ease;
+}
+
 .list-group-item:hover, .list-group-item.active-nav { background-color: rgba(255, 255, 255, 0.2) !important; font-weight: bold; }
 
+/* 首頁與標題 */
 .vh-100 { height: calc(100vh - 60px) !important; }
 .text-shadow { text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.8); }
 .tracking-wide { letter-spacing: 2px; }
@@ -29,15 +58,14 @@ body {
   padding: 20px 30px; border-radius: 15px 15px 60px 15px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(46, 139, 87, 0.2);
 }
 
+/* 背景浮水印 */
 .relative-wrap { position: relative; z-index: 1; }
 .relative-wrap::before {
   content: '\f1e3'; font-family: 'Font Awesome 6 Free'; font-weight: 400; position: fixed; top: 20%; right: -5%; font-size: 50vw;
   color: rgba(46, 139, 87, 0.03); z-index: -1; transform: rotate(-15deg); pointer-events: none;
 }
 
-.video-card { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.video-card:hover { transform: translateY(-8px); box-shadow: 0 15px 25px rgba(0,0,0,0.1) !important; }
-
+/* 歷史時間軸 */
 .vertical-timeline { position: relative; max-width: 900px; margin: 0 auto; }
 .vertical-timeline::after {
   content: ''; position: absolute; width: 4px; background-color: var(--football-green); top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px;
@@ -54,13 +82,29 @@ body {
   .timeline-item.left::after, .timeline-item.right::after { left: 19px; }
 }
 
+/* 返回頂部 */
 #backToTopBtn {
   display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99; border: none; outline: none; background-color: var(--football-green); color: white; cursor: pointer;
   width: 50px; height: 50px; border-radius: 50%; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: background-color 0.3s, transform 0.2s;
 }
 #backToTopBtn:hover { background-color: #1a5233; transform: translateY(-3px); }
 
-/* --- 遊戲卡牌設計與平滑展開動畫 --- */
+/* 共用浮動特效 */
+.hover-float { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.hover-float:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important; }
+
+/* 沉浸式滾動動畫 (Scroll Fade-in) */
+.fade-up-element {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.fade-up-element.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 小遊戲卡牌 */
 .modal-80 { max-width: 80vw; } .modal-80 .modal-content { height: 80vh; }
 .card-fan-container { position: relative; height: 450px; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 50px; }
 
@@ -69,72 +113,84 @@ body {
   transform: translateX(var(--tx, 0px)) translateY(calc(var(--ty, 0px) + var(--lift, 0px))) rotate(var(--angle, 0deg));
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), z-index 0.3s;
 }
-
 .game-card:hover { --lift: -30px; z-index: 50 !important; }
-
-.game-card-inner {
-  position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-}
-
+.game-card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); }
 .game-card.flipped .game-card-inner { transform: rotateY(180deg); }
-
 .game-card-front, .game-card-back {
   position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; border: 4px solid var(--football-green);
   display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 12px rgba(0,0,0,0.3); overflow: hidden;
 }
-
 .game-card-front {
   background-color: var(--football-green);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 0l20 20-20 20L0 20z' fill='%231a5233' fill-opacity='0.5'/%3E%3C/svg%3E");
   background-size: 60px 60px;
 }
-
 .game-card-back { background-color: var(--football-green); color: white; transform: rotateY(180deg); font-size: 5.5rem; font-weight: bold; }
 
+/* 動畫 */
 .transition-all { transition: all 0.3s ease; }
 .shake-anim { animation: shake 0.5s ease-in-out; }
 @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-10px); } 40%, 80% { transform: translateX(10px); } }
 .pop-anim { animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-/* =========================================
-   新增：共用的浮動懸停動畫類別
-   ========================================= */
-.hover-float {
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.hover-float:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
-}
-/* =========================================
-   新增：互動式球場圖鑑特效
-   ========================================= */
-.interactive-zone {
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
+/* 互動式球場圖鑑特效 */
+.interactive-zone { cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.interactive-zone:hover { fill: rgba(255, 215, 0, 0.4); stroke: #FFD700; stroke-width: 1; }
+.interactive-zone.active-zone { fill: rgba(255, 215, 0, 0.6); stroke: #FFD700; stroke-width: 1.5; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8)); }
+.pulse-icon { animation: pulse-op 1.5s infinite alternate; }
+@keyframes pulse-op { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.1); opacity: 1; } }
 
-/* 滑鼠滑過時發出微微的金黃光 */
-.interactive-zone:hover {
-  fill: rgba(255, 215, 0, 0.4); 
-  stroke: #FFD700;
-  stroke-width: 1;
+/* 球員與裁判節點專屬樣式 (靜止不動，以深淺顏色區分) */
+.player-node { 
+  stroke: white; 
+  stroke-width: 0.5; 
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
 }
-
-/* 點擊鎖定後的強烈亮光 */
-.interactive-zone.active-zone {
-  fill: rgba(255, 215, 0, 0.6);
-  stroke: #FFD700;
-  stroke-width: 1.5;
-  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+.player-node:hover, .player-node.active-zone { 
+  stroke: #FFF; 
+  stroke-width: 1.5; 
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); 
 }
+/* 前鋒：深紅色 (最具攻擊性) */
+.node-fwd { fill: rgba(220, 20, 60, 0.9); }
+.node-fwd:hover, .node-fwd.active-zone { fill: #DC143C; }
+/* 中場：正紅色 */
+.node-mid { fill: rgba(255, 69, 0, 0.85); }
+.node-mid:hover, .node-mid.active-zone { fill: #FF4500; }
+/* 後衛：橘紅色 */
+.node-def { fill: rgba(255, 140, 0, 0.8); }
+.node-def:hover, .node-def.active-zone { fill: #FF8C00; }
+/* 守門員：金黃色 (特殊位置) */
+.node-gk { fill: rgba(255, 215, 0, 0.9); }
+.node-gk:hover, .node-gk.active-zone { fill: #FFD700; }
+/* 裁判：顯眼的霓虹藍色 (場邊中立者) */
+.node-referee { fill: rgba(0, 255, 255, 0.9); }
+.node-referee:hover, .node-referee.active-zone { fill: #00FFFF; filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.8)); }
 
-.pulse-icon {
-  animation: pulse-op 1.5s infinite alternate;
+/* 歷史詳情頁互動選單專屬樣式 */
+#histYearList::-webkit-scrollbar { width: 6px; }
+#histYearList::-webkit-scrollbar-thumb { background-color: var(--football-green); border-radius: 10px; }
+#histYearList .list-group-item { transition: all 0.2s ease-in-out; cursor: pointer; border-left: 4px solid transparent; }
+#histYearList .list-group-item:hover { background-color: rgba(46, 139, 87, 0.1); border-left: 4px solid var(--football-green); }
+#histYearList .list-group-item.active { background-color: var(--football-green) !important; border-color: var(--football-green) !important; color: white !important; font-weight: bold; }
+
+/* 歷史時間軸影音膠囊列專屬樣式 */
+.video-ribbon {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--football-green) transparent;
 }
-
-@keyframes pulse-op {
-  0% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(1.1); opacity: 1; }
+.video-ribbon::-webkit-scrollbar { height: 6px; }
+.video-ribbon::-webkit-scrollbar-thumb { background-color: var(--football-green); border-radius: 10px; }
+.video-pill {
+  white-space: nowrap; 
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s;
+}
+.video-pill:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
 }
