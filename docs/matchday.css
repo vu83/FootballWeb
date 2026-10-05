@@ -38,7 +38,7 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
   position: relative;
   border: 1px solid #d3b462;
   border-radius: 100px 100px 12px 12px;
-  background: url('assets/nouveau-frame.webp') center / 100% 100% no-repeat;
+  background: url('assets/nouveau-border.webp') center / 100% 100% no-repeat;
   padding: 30px 12px 32px !important;
   min-height: 290px;
 }
@@ -329,7 +329,7 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
   border: 2px solid #075438;
   outline: 1px solid #c59d46;
   outline-offset: 7px;
-  background: #e5edc8 url('assets/nouveau-frame.webp') center / 100% 100% no-repeat;
+  background: #e5edc8 url('assets/nouveau-border.webp') center / 100% 100% no-repeat;
   font-weight: 800;
   font-size: 2.7rem;
   color: #075438;
@@ -359,7 +359,7 @@ progress::-webkit-progress-value { background: #075438; }
   outline-offset: -9px;
   border-radius: 47% 47% 7px 7px;
   color: #fbf9e7;
-  background: #075438 url('assets/nouveau-frame.webp') center / 100% 100% no-repeat;
+  background: #075438 url('assets/nouveau-border.webp') center / 100% 100% no-repeat;
   box-shadow: 5px 5px 0 #acbe7e;
   gap: 5px;
   padding: 24px 10px 20px;
@@ -369,7 +369,7 @@ progress::-webkit-progress-value { background: #075438; }
 .draw-card .card-number { font-size: 1rem; font-style: italic; color: #d3e88a; }
 .draw-card .card-ball { font-size: 1.8rem; color: #eff4b9; margin: 8px 0; }
 .draw-card .card-caption { font-size: .95rem; font-weight: 600; }
-.draw-card:hover { background: #116942 url('assets/nouveau-frame.webp') center / 100% 100% no-repeat; box-shadow: 5px 10px 0 #acbe7e; }
+.draw-card:hover { background: #116942 url('assets/nouveau-border.webp') center / 100% 100% no-repeat; box-shadow: 5px 10px 0 #acbe7e; }
 .draw-card:disabled { background-color: #dce8c9; color: #3a593b; box-shadow: 3px 3px 0 #b7c99f; border-color: #8faa73; outline-color: #8faa73; }
 .draw-card:disabled .card-number { color: #44673d; }
 .draw-card.correct .card-ball { color: #075438; }
@@ -504,4 +504,57 @@ progress::-webkit-progress-value { background: #075438; }
 @media (prefers-reduced-motion: reduce) {
   .btn, .home-paths a, .draw-card { transition: none; }
   .btn:hover, .home-paths a:hover, .draw-card:hover { transform: none; }
+}
+
+/* Keep the shared football emblem round, independent of the border aspect ratio. */
+.sidebar-heading, .league-seal { position: relative; }
+.sidebar-heading::before, .hero-picture::before, .league-seal::before, .draw-card::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: var(--medallion-top, 14px);
+  width: var(--medallion-size, 48px);
+  aspect-ratio: 1;
+  height: auto;
+  transform: translateX(-50%);
+  background: url('assets/nouveau-medallion.webp') center / contain no-repeat;
+  pointer-events: none;
+  z-index: 5;
+}
+.hero-picture { --medallion-size: clamp(58px, 6.4vw, 90px); --medallion-top: 16px; }
+.league-seal { --medallion-size: 48px; --medallion-top: 15px; }
+.draw-card { --medallion-size: 30px; --medallion-top: 11px; padding-top: 38px; }
+.draw-card::before { z-index: 1; }
+.draw-card:disabled::before { opacity: .6; }
+.sidebar-heading {
+  --medallion-size: 48px;
+  --medallion-top: 14px;
+  container-type: inline-size;
+  justify-content: center;
+  min-height: 230px;
+  padding: 66px 20px 34px !important;
+}
+.brand-title {
+  font-size: min(2.05rem, 21cqi);
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-align: center;
+  max-width: 100%;
+  margin-top: 0;
+}
+.brand-title > span { display: block; white-space: nowrap; overflow-wrap: normal; word-break: keep-all; }
+.hero-copy { container-type: inline-size; }
+.hero-copy h1 {
+  font-size: min(clamp(3.5rem, 5.7vw, 6rem), 23cqi);
+  letter-spacing: -.035em;
+}
+.hero-copy h1 > span { white-space: nowrap; overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 900px) {
+  .sidebar-heading { min-height: 230px; }
+}
+@media (max-width: 600px) {
+  .hero-picture { --medallion-size: 56px; --medallion-top: 12px; }
+  .league-seal { --medallion-size: 42px; --medallion-top: 12px; }
+  .draw-card { --medallion-size: 24px; --medallion-top: 9px; min-height: 172px; padding-top: 30px; }
+  .hero-copy h1 { font-size: min(clamp(3.5rem, 13.2vw, 5.2rem), 23cqi); }
 }
