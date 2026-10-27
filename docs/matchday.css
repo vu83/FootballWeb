@@ -570,7 +570,7 @@ progress::-webkit-progress-value { background: #075438; }
 #histDetailImg {
   display: block;
   width: 100%;
-  max-width: 900px;
+  max-width: 760px;
   height: auto;
   max-height: none;
   margin-inline: auto;
@@ -586,19 +586,22 @@ progress::-webkit-progress-value { background: #075438; }
 .position-illustration {
   display: block;
   width: 100%;
-  max-width: 440px;
+  max-width: 360px;
   height: auto;
   object-fit: contain;
 }
 .league-art {
-  width: min(100%, 280px);
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: min(100%, 200px);
+  aspect-ratio: 1 / 1;
   margin: 12px auto;
-  padding: clamp(14px, 2vw, 24px);
+  padding: 30px;
   background: #fff;
-  border: 1px solid #075438;
-  border-bottom: 4px solid #c59d46;
-  border-radius: 20px 3px 20px 3px;
-  box-shadow: 5px 5px 0 #d3e0b7;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px #0754381a;
 }
 .league-art img {
   display: block;
@@ -612,5 +615,16 @@ progress::-webkit-progress-value { background: #075438; }
     border-bottom: 1px solid #c5a34f66;
   }
   .position-illustration { max-width: 320px; }
-  .league-art { width: min(100%, 230px); }
+}
+
+/* Expanded history copy retains the original chronology and year controls. */
+.history-era-intro {
+  color: #38583f;
+  font-size: 1.125rem;
+  line-height: 1.9;
+  margin: 0 0 28px;
+}
+#histEventContent p:last-child { margin-bottom: 0; }
+@media (max-width: 600px) {
+  .history-era-intro { font-size: 1rem; }
 }
