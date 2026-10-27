@@ -264,9 +264,9 @@
                 <h6 class="fw-bold text-dark mb-2 fs-6"><i class="fa-solid fa-film text-danger me-1"></i> 本期影音紀事</h6>
                 <div class="video-ribbon">
                   <button class="btn btn-outline-success btn-sm history-video" aria-label="播放 6. 戰後餘生" onclick="openVideoModal('6. 戰後餘生', 'KVFraKZENtY')"><i class="fa-solid fa-play-circle" aria-hidden="true"></i>6. 戰後餘生</button>
-                  <span class="planned-video" aria-label="影片準備中">7. 亞洲足球王國<small>影片準備中</small></span>
-                  <span class="planned-video" aria-label="影片準備中">8. 亞運金牌秘密<small>影片準備中</small></span>
-                  <span class="planned-video" aria-label="影片準備中">9. 華僑外交傳奇<small>影片準備中</small></span>
+                  <button class="btn btn-outline-success btn-sm" onclick="openVideoModal('7. 亞洲足球王國', 'hKpfWZwjfp8')"><i class="fa-solid fa-play-circle me-2" aria-hidden="true"></i>7. 亞洲足球王國</button>
+                  <button class="btn btn-outline-success btn-sm" onclick="openVideoModal('8. 亞運金牌秘密', 'E3oj_uKRuWw')"><i class="fa-solid fa-play-circle me-2" aria-hidden="true"></i>8. 亞運金牌秘密</button>
+                  <button class="btn btn-outline-success btn-sm" onclick="openVideoModal('9. 華僑外交傳奇', 'r9T-a0iNJqU')"><i class="fa-solid fa-play-circle me-2" aria-hidden="true"></i>9. 華僑外交傳奇</button>
                   <span class="planned-video" aria-label="影片準備中">10. 迷彩魂<small>影片準備中</small></span>
                   <span class="planned-video" aria-label="影片準備中">11. 生存戰<small>影片準備中</small></span>
                   <span class="planned-video" aria-label="影片準備中">12. 1967狂熱<small>影片準備中</small></span>
@@ -381,7 +381,7 @@
             <div class="tab-pane fade" id="premier" role="tabpanel">
               <div class="row align-items-center">
                 <div class="col-md-5 text-center mb-4 mb-md-0">
-                  <div class="league-seal">英超</div>
+                  <figure class="league-art"><img src="assets/media/league-premier.webp" alt="英格蘭超級聯賽獅子標誌插畫" width="1254" height="1254" loading="lazy" decoding="async"></figure>
                 </div>
                 <div class="col-md-7">
                   <h3 class="fw-bold text-dark mb-2">英格蘭超級聯賽 (Premier League)</h3>
@@ -397,7 +397,7 @@
             <div class="tab-pane fade" id="laliga" role="tabpanel">
               <div class="row align-items-center">
                 <div class="col-md-5 text-center mb-4 mb-md-0">
-                  <div class="league-seal">西甲</div>
+                  <figure class="league-art"><img src="assets/media/league-laliga.webp" alt="西班牙甲級聯賽標誌插畫" width="1254" height="1254" loading="lazy" decoding="async"></figure>
                 </div>
                 <div class="col-md-7">
                   <h3 class="fw-bold text-dark mb-2">西班牙甲級聯賽 (La Liga)</h3>
@@ -413,7 +413,7 @@
             <div class="tab-pane fade" id="bundesliga" role="tabpanel">
               <div class="row align-items-center">
                 <div class="col-md-5 text-center mb-4 mb-md-0">
-                  <div class="league-seal">德甲</div>
+                  <figure class="league-art"><img src="assets/media/league-bundesliga.webp" alt="德國甲級聯賽踢球人形標誌插畫" width="1254" height="1254" loading="lazy" decoding="async"></figure>
                 </div>
                 <div class="col-md-7">
                   <h3 class="fw-bold text-dark mb-2">德國甲級聯賽 (Bundesliga)</h3>
@@ -429,7 +429,7 @@
             <div class="tab-pane fade" id="seriea" role="tabpanel">
               <div class="row align-items-center">
                 <div class="col-md-5 text-center mb-4 mb-md-0">
-                  <div class="league-seal">義甲</div>
+                  <figure class="league-art"><img src="assets/media/league-seriea.webp" alt="義大利甲級聯賽字母 A 標誌插畫" width="1254" height="1254" loading="lazy" decoding="async"></figure>
                 </div>
                 <div class="col-md-7">
                   <h3 class="fw-bold text-dark mb-2">義大利甲級聯賽 (Serie A)</h3>
@@ -445,7 +445,7 @@
             <div class="tab-pane fade" id="ligue1" role="tabpanel">
               <div class="row align-items-center">
                 <div class="col-md-5 text-center mb-4 mb-md-0">
-                  <div class="league-seal">法甲</div>
+                  <figure class="league-art"><img src="assets/media/league-ligue1.webp" alt="法國甲級聯賽 L1 標誌插畫" width="1254" height="1254" loading="lazy" decoding="async"></figure>
                 </div>
                 <div class="col-md-7">
                   <h3 class="fw-bold text-dark mb-2">法國甲級聯賽 (Ligue 1)</h3>
@@ -470,7 +470,7 @@
         <div class="section-header bg-dark"><h2 tabindex="-1" class="fw-bold mb-0 text-white"><i class="fa-solid fa-user-ninja me-2"></i>球員位置詳情</h2></div>
         <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
           <div class="row g-0">
-            <div class="col-md-5"><img id="posDetailImg" src="" class="img-fluid h-100 object-fit-cover w-100" style="min-height: 300px;"></div>
+            <div class="col-md-5 position-art-column"><img id="posDetailImg" class="position-illustration" width="1254" height="1254" alt="" decoding="async"></div>
             <div class="col-md-7 d-flex flex-column justify-content-center p-5 bg-white">
               <h2 id="posDetailTitle" class="fw-bold text-success mb-3"></h2>
               <p id="posDetailDesc" class="fs-5 lh-lg text-secondary mb-4"></p>
@@ -486,7 +486,7 @@
           <h2 tabindex="-1" class="fw-bold mb-0 text-white"><i class="fa-solid fa-book-journal-whills me-2"></i>歷史年表詳細紀事</h2>
         </div>
         <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5 bg-white">
-          <img id="histDetailImg" src="" class="card-img-top object-fit-cover" style="height: 300px;">
+          <figure class="history-era-media"><img id="histDetailImg" width="1536" height="1024" alt="" decoding="async"></figure>
           <div class="card-body p-4 p-md-5">
             <h3 id="histDetailTitle" class="fw-bold text-success mb-4 text-center border-bottom pb-3"></h3>
             <div class="row g-4 mt-2">

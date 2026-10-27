@@ -1,25 +1,29 @@
 const positionData = {
   "forward": {
     title: "前鋒 (Forward / Striker)",
-    img: "assets/field5.jpg",
+    img: "assets/media/position-forward.webp",
+    alt: "前鋒起腳射門的主題插畫",
     desc: "前鋒是球隊中最靠近對方球門的位置，核心任務就是「進球」與創造射門機會。他們需要極高的爆發速度、突破能力與精準的射門直覺。在現代足球戰術中，前鋒也必須參與第一線的防守壓迫，阻礙對手從後場組織進攻。",
     players: "代表球星：梅西 (Lionel Messi)、C羅 (Cristiano Ronaldo)、姆巴佩 (Kylian Mbappé)"
   },
   "midfielder": {
     title: "中場 (Midfielder)",
-    img: "assets/field2.jpg",
+    img: "assets/media/position-midfielder.webp",
+    alt: "中場球員傳球與組織攻勢的主題插畫",
     desc: "中場是球隊的「大腦與引擎」，負責連結防線與鋒線。他們不僅要攔截對手的進攻，還要策動己方的攻勢。優秀的中場球員具備寬廣的視野、精準的長短傳能力，以及充沛的體能，整場比賽的跑動距離通常是全隊最高。",
     players: "代表球星：德布勞內 (Kevin De Bruyne)、莫德里奇 (Luka Modrić)、席丹 (Zinedine Zidane)"
   },
   "defender": {
     title: "後衛 (Defender)",
-    img: "assets/field5.jpg",
+    img: "assets/media/position-defender.webp",
+    alt: "後衛在球門前防守對手的主題插畫",
     desc: "後衛是球隊防線的基石，主要任務是阻止對手靠近自家禁區與射門。他們需要強悍的身體對抗能力、出色的制空權（頭槌），以及冷靜的防守判斷。現代的邊後衛更被要求具備強大的插上助攻能力，能在邊路頻繁上下往返。",
     players: "代表球星：范戴克 (Virgil van Dijk)、拉莫斯 (Sergio Ramos)、馬爾蒂尼 (Paolo Maldini)"
   },
   "goalkeeper": {
     title: "守門員 (Goalkeeper)",
-    img: "assets/field6.jpg",
+    img: "assets/media/position-goalkeeper.webp",
+    alt: "守門員飛身撲救足球的主題插畫",
     desc: "守門員是球場上唯一能合法使用手部觸球的球員（僅限自家禁區內）。他們是球隊的最後一道防線，需要極佳的反應神經、敏捷的撲救動作與指揮防線的領袖氣質。一個頂級的守門員往往能在一場比賽中拯救球隊免於落敗。",
     players: "代表球星：諾伊爾 (Manuel Neuer)、阿利松 (Alisson Becker)、布馮 (Gianluigi Buffon)"
   }
@@ -28,7 +32,8 @@ const positionData = {
 const historyData = {
   "era1": {
     title: "一、1910 - 1920年代：足球文明的傳入與萌芽",
-    img: "assets/field5.jpg",
+    img: "assets/media/history-1910-1920.webp",
+    alt: "1910 至 1920 年代臺灣校園足球傳入與萌芽主題插畫",
     events: [
       { year: "1913年", desc: "台北一中教師松岡正男成立蹴球部，是北臺灣足球運動的開端。" },
       { year: "1914年", desc: "英國宣教士萬榮華 (Edward Band) 出任長老教中學（今長榮中學）校長，將英式足球帶入臺南長老教中學的校園。" },
@@ -40,7 +45,8 @@ const historyData = {
   },
   "era2": {
     title: "二、1930 - 1945年：日治時期的巔峰與戰時體制",
-    img: "assets/field5.jpg",
+    img: "assets/media/history-1930-1945.webp",
+    alt: "1930 至 1945 年日治時期校園足球與戰時體制主題插畫",
     events: [
       { year: "1930年", desc: "台北舉辦首屆<strong>「全島蹴球大會」</strong>（三澤盃）。" },
       { year: "1934年", desc: "長老教中學遠征日本，首戰 0:10 慘敗給神戶一中，隨後以 1:1 踢平廣島一中。<br><br>同年爆發「神社參拜事件」，長老教中學師生被迫前往台南神社參拜，足球場成為民族情緒的壓力閥。" },
@@ -51,7 +57,8 @@ const historyData = {
   },
   "era3": {
     title: "三、1946 - 1960年代：戰後初期與「港腳」金牌時代",
-    img: "assets/field8.jpg",
+    img: "assets/media/history-1946-1960.webp",
+    alt: "1946 至 1960 年代戰後初期與港腳金牌時代主題插畫",
     events: [
       { year: "1946年", desc: "第一屆臺灣省運動會舉辦，台南市隊（本省籍）與國防軍（外省籍）在決賽爆發激烈衝突。<br><br><span class='text-success fw-bold'><i class='fa-solid fa-thumbtack me-2'></i>12月：</span>台北舉行「華英足球友誼賽」，門票收入用於修復介壽館（原總督府）。" },
       { year: "1947年", desc: "上海體育記者團訪台後，留下「臺灣足籃球最為落後」的標籤。" },
@@ -64,7 +71,8 @@ const historyData = {
   },
   "era4": {
     title: "四、1970 - 1980年代：外交轉折與「木蘭」奇蹟",
-    img: "assets/field1.jpg",
+    img: "assets/media/history-1970-1980.webp",
+    alt: "1970 至 1980 年代外交轉折與木蘭女足主題插畫",
     events: [
       { year: "1971年", desc: "中華民國退出聯合國，國家隊開始轉向以臺灣本土球員（如陳光雄）為主體。" },
       { year: "1974年", desc: "中華足協被逐出亞足聯（AFC），隨後開啟長達15年的<strong>「大洋洲流浪時期」</strong>。" },
@@ -77,7 +85,8 @@ const historyData = {
   },
   "era5": {
     title: "五、1990年代至今：全球化潮流與俱樂部崛起",
-    img: "assets/field9.jpg",
+    img: "assets/media/history-1990-present.webp",
+    alt: "1990 年代至今臺灣足球在地發展與俱樂部主題插畫",
     events: [
       { year: "1989年", desc: "臺灣以「中華台北」名義重返亞足聯。" },
       { year: "2002年", desc: "日韓世界盃帶動臺灣的觀賽熱潮，足球成為重要的社會次文化。" },

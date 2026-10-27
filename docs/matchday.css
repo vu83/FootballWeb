@@ -558,3 +558,59 @@ progress::-webkit-progress-value { background: #075438; }
   .draw-card { --medallion-size: 24px; --medallion-top: 9px; min-height: 172px; padding-top: 30px; }
   .hero-copy h1 { font-size: min(clamp(3.5rem, 13.2vw, 5.2rem), 23cqi); }
 }
+
+
+/* Uploaded project illustrations: preserve every image's full composition. */
+.history-era-media {
+  margin: 0;
+  padding: clamp(12px, 2vw, 24px);
+  background: #f0f5e4;
+  border-bottom: 1px solid #c59d46;
+}
+#histDetailImg {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  max-height: none;
+  margin-inline: auto;
+  object-fit: contain;
+}
+.position-art-column {
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 2.4vw, 32px);
+  background: #fff;
+  border-right: 1px solid #c5a34f66;
+}
+.position-illustration {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  object-fit: contain;
+}
+.league-art {
+  width: min(100%, 280px);
+  margin: 12px auto;
+  padding: clamp(14px, 2vw, 24px);
+  background: #fff;
+  border: 1px solid #075438;
+  border-bottom: 4px solid #c59d46;
+  border-radius: 20px 3px 20px 3px;
+  box-shadow: 5px 5px 0 #d3e0b7;
+}
+.league-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+@media (max-width: 767px) {
+  .position-art-column {
+    border-right: 0;
+    border-bottom: 1px solid #c5a34f66;
+  }
+  .position-illustration { max-width: 320px; }
+  .league-art { width: min(100%, 230px); }
+}
